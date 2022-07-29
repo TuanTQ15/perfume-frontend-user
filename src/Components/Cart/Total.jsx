@@ -158,7 +158,7 @@ function Total({ cart, onSendFunc, value, onAddOrder,onCheckQuantity }) {
 
     return (
         <aside className="col-sm-3">
-            <p className="alert alert-success">Thanh toán đơn hàng trên 100.000đ để được miễn phí priceo hàng.</p>
+            <p className="alert alert-success">Thanh toán đơn hàng trên 100.000đ để được miễn phí price giao hàng.</p>
             <dl className="dlist-align">
                 <dt>Giá gốc: </dt>
                 <dd className="text-right">

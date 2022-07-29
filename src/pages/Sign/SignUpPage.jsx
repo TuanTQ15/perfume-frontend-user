@@ -63,7 +63,9 @@ export const SignUpPage = ({ match, history, handleSignUp, handleUpdateUser }) =
         if (getAge(user.dateOfBirth) < 12) {
             msg.dateOfBirth = "Khách hàng cần trên 12 tuổi"
         }
-
+        if(isEmpty(user.phoneNumber)){
+            msg.phoneNumber="Số điện thoại không được để trống"
+        }
         if (isEmpty(user.email)) {
             msg.email = "Trường này không được để trống"
         } else if (!isEmail(user.email)) {
@@ -110,35 +112,36 @@ export const SignUpPage = ({ match, history, handleSignUp, handleUpdateUser }) =
         e.preventDefault()
         const isValid = validateAll()
         //validate
-        console.log(user)
+        
 
         if (isValid) {
             // console.log(JSON.stringify(user))
             if (checkAdd === true) {
                 let res = await handleSignUp(user)
                 
-                if (res === 1) {
+                if (res.data.result) {
+                    
                     MySwal.fire({
-                        icon: 'success',
+                        icon: 'succes',
                         title: 'Tạo tài khoản thành công',
                         showConfirmButton: false,
                         timer: 1500
                     })
                 
-                    history.push('/signin')
+                    history.goBack()
                 } else {
+                    
                     MySwal.fire({
                         icon: 'error',
                         title: 'Oops...',
-                        text: res.data.message
+                        text: res?res.data.message:'Tạo tài khoản thất bại, kiểm tra lại máy chủ'
                     })
-               
                 }
             } else {
                 let res = await handleUpdateUser(user);
                 if (res.result === 1) {
                     MySwal.fire({
-                        icon: 'success',
+                        icon: 'succes',
                         title: 'Sửa thông tin thành công',
                         showConfirmButton: false,
                         timer: 1500
@@ -148,7 +151,7 @@ export const SignUpPage = ({ match, history, handleSignUp, handleUpdateUser }) =
                     MySwal.fire({
                         icon: 'error',
                         title: 'Oops...',
-                        text: res.message
+                        text: res?res.message:'Tạo tài khoản thất bại, kiểm tra lại máy chủ'
                     })
                 }
             }

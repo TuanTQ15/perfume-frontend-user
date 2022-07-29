@@ -105,7 +105,7 @@ const DetailProduct = ({ match, onAddtoCart }) => {
                 </button>
             }
             return <button onClick={() => handleAddTocart()} className="btn  btn-outline-primary">
-                <i className="fas fa-shopping-cart"></i> Add to cart
+                <i className="fas fa-shopping-cart"></i> Thêm giỏ hàng
             </button>
         }
     }

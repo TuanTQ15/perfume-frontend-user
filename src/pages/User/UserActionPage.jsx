@@ -35,7 +35,7 @@ export const ChangePasswordPage = ({ match, history, handleUpdateUser }) => {
         } else if (hasWhiteSpace(user.OldPass)) {
             msg.OldPass = "Trường này không được chứa khoảng trống"
         }
-
+        
         if (isEmpty(user.NewPass)) {
             msg.NewPass = "Trường này không được để trống"
         } else if (user.NewPass.length < 6) {
@@ -85,7 +85,7 @@ export const ChangePasswordPage = ({ match, history, handleUpdateUser }) => {
         if (isValid) {
             let res = await handleUpdateUser(user);
                 console.log(res);
-                if(res.result === 1){
+                if(res === 1){
                     MySwal.fire({
                         icon: 'success',
                         title: 'Đổi mật khẩu thành công',
@@ -97,7 +97,7 @@ export const ChangePasswordPage = ({ match, history, handleUpdateUser }) => {
                     MySwal.fire({
                         icon: 'error',
                         title: 'Oops...',
-                        text: res.message
+                        text: res?res.message:"Đổi mật khẩu thất bại"
                     })
                 }
         }

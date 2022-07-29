@@ -49,9 +49,9 @@ export const HotSellItem = ({ item, onAddToCart }) => {
       }
     let discountEnable= show(item.detailPromotion)
     return (
-        <div className="col-md-4">
+        <div className="col-md-3">
 
-            <figure className="card card-product">
+            <figure className="card card-product" style={{width:260, height:500}}>
                 <small className="bg-danger" style={{display:discountEnable.display, color: 'white', fontSize: 14, position: "static", width: 30, height: 30 }}>{discountEnable.discount}% </small>
                 <Link to={`lineproduct/${item.productId}`} style={{ color: 'black', textDecoration: 'none' }} className="img-wrap"><img src={item.image} alt="" /></Link>
                 <Link to={`lineproduct/${item.productId}`} style={{ color: 'black', textDecoration: 'none' }} className="info-wrap">
@@ -61,14 +61,13 @@ export const HotSellItem = ({ item, onAddToCart }) => {
                     <p className="desc">Số đã được mua:  {item.quantitySold}</p>
                 </Link>
                 <div className="bottom-wrap">
-                    <button onClick={() => { handleAddToCart(item) }} className="btn btn-sm btn-primary float-right">Add to cart</button>
+                    <button onClick={() => { handleAddToCart(item) }} className="btn btn-sm btn-primary float-right">Thêm giỏ hàng</button>
                     <div className="price-wrap h5">
                         <NumberFormat displayType="text" thousandSeparator={true} value={item.detailPromotion !== null ? item.price * (100 - item.detailPromotion.percentDiscount) / 100 : item.price} suffix={"đ"} />
-                        &nbsp;&nbsp;&nbsp;
-                        <del className="price-old"><NumberFormat displayType="text" thousandSeparator={true} value={item.detailPromotion !== null ? item.price : ""} suffix={"đ"} /></del>
-
                     </div>
+                    <del className="price-old"><NumberFormat displayType="text" thousandSeparator={true} value={item.detailPromotion !== null ? item.price : ""} suffix={"đ"} /></del>
                 </div>
+                
             </figure>
         </div>
     )

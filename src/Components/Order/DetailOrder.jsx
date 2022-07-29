@@ -87,7 +87,7 @@ const Modal = ({ isShowing, hide, item }) => isShowing ? ReactDOM.createPortal(
                     <p>Chúng tôi sẽ gửi đơn đặt hàng của bạn qua Email !</p>
                     <p className="font-weight-bold mb-0">Cảm ơn khi đã mua sắm ở website của chúng tôi!</p> <span>Perfume Team</span>
                   </div>
-                  <div className="d-flex justify-content-between footer p-3"> <span>Need Help? visit our <a href="/#"> help center</a></span> <span>{formatDate(new Date(item.bookingDate))}</span> </div>
+                  <div className="d-flex justify-content-between footer p-3"> <span>Bạn cần trợ giúp? Hãy đến với <a href="/#"> trung tâm trợ giúp</a></span> <span>{formatDate(new Date(item.bookingDate))}</span> </div>
                 </div>
               </div>
             </div>

@@ -37,11 +37,13 @@ function ProductItems({ item, onAddToCart, grid }) {
     // console.log(item)
     return (
         <div className={`col-md-${grid}`} >
-            <figure className="card card-product">
-                <Link className="img-wrap" to={`/lineproduct/${item.productId}`} style={{ textDecoration: 'none', color: 'black' }}>
+            
+            <figure className="card card-product" style={{width:260, height:500}}>
+            <small className="bg-danger" style={{display:item.detailPromotion?"block":"none", color: 'white', fontSize: 14, position: "static", width: 30, height: 30 }}>{item.detailPromotion&&item.detailPromotion.percentDiscount}% </small>
+                <Link className="img-wrap" to={`/lineproduct/${item.productId}`} style={{ textDecoration: 'none', color: 'black',width:258,height:220 }}>
                     <img src={item.image} alt="" />
                 </Link>
-                <Link className="info-wrap" to={`/lineproduct/${item.productId}`} style={{ textDecoration: 'none', color: 'black' }}>
+                <Link className="info-wrap" to={`/lineproduct/${item.productId}`} style={{ textDecoration: 'none', color: 'black',width:258,height:200  }}>
                     <h4 className="title">{item.productName}</h4>
                     <p className="desc">Xuất xứ: {item.origin}</p>
                     <div className="rating-wrap">
@@ -52,18 +54,16 @@ function ProductItems({ item, onAddToCart, grid }) {
                         {/* <div className="label-rating">154 orders </div> */}
                     </div>
                 </Link>
-                <div className="bottom-wrap">
+                <div className="bottom-wrap" style={{width:258,height:74 }}>
                     <button className="btn btn-sm btn-primary float-right" disabled={item.quantityInStock <= 0 ? true : false}
                         onClick={() => { handleAddToCart(item) }}>
-                        {item.quantityInStock <= 0 ? "Out of stock" : "Add To Cart"}
+                        {item.quantityInStock <= 0 ? "Hết hàng" : "Thêm giỏ hàng"}
                     </button>
-                    <div className="price-wrap h6" style={{ textDecoration: 'none' }}>
-                        {/* <span className="price-new">{item.detailPromotion !== null ? item.price * (100 - item.detailPromotion.percenDiscount) / 100 : item.price}đ</span> */}
-                        <NumberFormat displayType="text" thousandSeparator={true} value={item.detailPromotion !== null ? item.price * (100 - item.detailPromotion.percentDiscount) / 100 : item.price} suffix={"đ"} />
-                        &nbsp;&nbsp;
-                        {/* <del className="price-old">{item.detailPromotion !== null ? item.price : ""}</del> */}
-                        <del className="price-old"><NumberFormat displayType="text" thousandSeparator={true} value={item.detailPromotion !== null ? item.price : ""} suffix={"đ"} /></del>
+                    <div className="price-wrap h5" style={{ textDecoration: 'none' }}>
+                       
+                        <NumberFormat displayType="text" thousandSeparator={true} value={item.detailPromotion !== null ? item.price * (100 - item.detailPromotion.percentDiscount) / 100 : item.price} suffix={"đ"} />                    
                     </div>
+                    <del className="price-old"><NumberFormat displayType="text" thousandSeparator={true} value={item.detailPromotion !== null ? item.price : ""} suffix={"đ"} /></del>
                 </div>
             </figure>
         </div>
